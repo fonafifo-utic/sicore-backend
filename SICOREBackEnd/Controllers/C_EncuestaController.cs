@@ -245,5 +245,24 @@ namespace SICOREBackEnd.Controllers
             return Ok(resultado);
         }
 
+        [HttpGet("ObtenerRespuestasDeLaEncuestaExportarExcel")]
+        public async Task<IActionResult> ObtenerRespuestasDeLaEncuestaExportarExcel()
+        {
+            IEnumerable<iEncuestaTraeRespuestasParaExcel> resultado = null;
+
+            resultado = await clsPregunta.ObtenerRespuestasDeLaEncuestaExportarExcel();
+
+            return Ok(resultado);
+        }
+
+        [HttpGet("ObtenerRespuestasOpinion/{fechaInicio}/{fechaFin}")]
+        public async Task<IActionResult> ObtenerRespuestasOpinion(string fechaInicio, string fechaFin)
+        {
+            IEnumerable<iEncuestaTraeRespuestasOpinion> resultado = null;
+
+            resultado = await clsPregunta.ObtenerRespuestasOpinion(fechaInicio, fechaFin);
+
+            return Ok(resultado);
+        }
     }
 }
