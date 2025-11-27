@@ -26,11 +26,6 @@ namespace SICOREBackEnd.Models
         public const string PA_USUARIO_CAMBIA_PERFIL = "PA_USUARIO_CAMBIA_PERFIL";
     }
 
-    public class iUsuarioConfiguradoDFM
-    {
-        public string claveSecretaMFA { get; set; }
-    }
-
     public class LoginIngreso
     {
         public string correoCedula { get; set; }
@@ -141,27 +136,6 @@ namespace SICOREBackEnd.Models
     {
         static IConfiguration confSICORE = (new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile(Constantes.APP_SETTINGS).Build());
         public static string strconSICORE = confSICORE[Constantes.CADENA_CONEXION_DESA].ToString();
-
-        public async Task<IEnumerable<iUsuarioConfiguradoDFM>> obtenerConfiguracionDeDFM(int idUsuario)
-        {
-            IEnumerable<iUsuarioConfiguradoDFM> resultado = null;
-            try
-            {
-                using (SqlConnection con = new SqlConnection(strconSICORE))
-                {
-                    var values = new { @pIdUsuario = idUsuario };
-                    resultado = await con.QueryAsync<iUsuarioConfiguradoDFM>("PA_USUARIO_REVISA_CONFIGURACION",
-                        values, commandType: CommandType.StoredProcedure);
-                }
-            }
-            catch (Exception e)
-            {
-                string mensaje = e.Message;
-                resultado = null;
-            }
-
-            return resultado;
-        }
 
         public async Task<IEnumerable<LoginSalida>> DoLogin(LoginIngreso objLogin)
         {

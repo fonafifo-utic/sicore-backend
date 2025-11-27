@@ -32,7 +32,6 @@
         public const string COTIZACIONES = "cotizaciones";
         public const string FORMALIZACIONES = "formalizaciones";
         public const string VENTAS = "ventas";
-        public const string ESFUERZO = "esfuerzo";
 
         public const string DEPARTAMENTO = "DEPARTAMENTO DE MERCADEO Y COMERCIALIZACIÓN";
         

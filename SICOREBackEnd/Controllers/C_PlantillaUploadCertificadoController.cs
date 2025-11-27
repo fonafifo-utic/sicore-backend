@@ -60,7 +60,7 @@ namespace SICOREBackEnd.Controllers
 
                     if (resultadoValidacion)
                     {
-                        iExpedienteCertificado expediente = new iExpedienteCertificado
+                        iExpediente expediente = new iExpediente
                         {
                             fechaGeneracion = "",
                             idCertificado = pCertificado.idCertificado,
@@ -137,7 +137,7 @@ namespace SICOREBackEnd.Controllers
                             fileStream.Dispose();
                         }
 
-                        iExpedienteCertificado expediente = new iExpedienteCertificado
+                        iExpediente expediente = new iExpediente
                         {
                             fechaGeneracion = "",
                             idCertificado = 0,

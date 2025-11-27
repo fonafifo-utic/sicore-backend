@@ -54,7 +54,7 @@ namespace SICOREBackEnd.Controllers
         }
 
         [HttpGet("ObtenerFormalizacionParaVistaPorId/{idFormalizacion}")]
-        public async Task<IActionResult> ObtenerFormalizacionParaVistaPorId(string idFormalizacion)
+        public async Task<IActionResult> ObtenerFormalizacionParaVistaPorId(int idFormalizacion)
         {
             IEnumerable<iVerUnaFormalizacion> resultado = null;
 
@@ -124,7 +124,7 @@ namespace SICOREBackEnd.Controllers
         }
 
         [HttpGet("ObtenerRutaFacturaPorId/{idFormalizacion}")]
-        public async Task<IActionResult> ObtenerRutaFacturaPorId(string idFormalizacion)
+        public async Task<IActionResult> ObtenerRutaFacturaPorId(int idFormalizacion)
         {
             IEnumerable<iRutaFacturaFormalizacion> resultado = null;
 
@@ -209,7 +209,7 @@ namespace SICOREBackEnd.Controllers
         {
             Resultado resultado = new Resultado();
 
-            string respuesta = await clsRevisionFinanciera.activaRevisionDeFormalizacion(pFormalizacion.idFormalizacion);
+            string respuesta = await clsRevisionFinanciera.activaRevisionDeFormalizacion(pFormalizacion.consecutivo);
 
             if (respuesta == "1")
             {
@@ -246,24 +246,6 @@ namespace SICOREBackEnd.Controllers
             return Ok(resultado);
         }
 
-        [HttpPost("RegistraUnaFormalizacionAgrupada")]
-        public async Task<IActionResult> RegistraUnaFormalizacionAgrupada([FromBody] iFormalizacionParaSalvar pFormalizacion)
-        {
-            Resultado resultado = new Resultado();
-            string respuesta = await clsRevisionFinanciera.registraUnaFormalizacionAgrupada(pFormalizacion);
-
-            if (respuesta == "1")
-            {
-                resultado.valor = respuesta;
-                resultado.descripcion = string.Empty;
-            }
-            else
-            {
-                resultado.valor = "-1";
-                resultado.descripcion = respuesta;
-            }
-
-            return Ok(resultado);
-        }
+        
     }
 }

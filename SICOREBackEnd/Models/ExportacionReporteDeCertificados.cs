@@ -82,59 +82,56 @@ namespace SICOREBackEnd.Models
                     _margenIzquierda = 50;
                     _dibujaSectorAgrupador(gfx, sector);
                     foreach (var usuarioAgrupador in listaUsuarios)
+                {
+                    _margenTop += 15;
+                    _margenIzquierda = 50;
+                    _dibujaFuncionarioAgrupador(gfx, usuarioAgrupador);
+
+                    foreach (var columna in columnas)
                     {
-                        _margenTop += 15;
-                        _margenIzquierda = 50;
-                        _dibujaFuncionarioAgrupador(gfx, usuarioAgrupador);
+                        _dibujaColumnasReporte(columna, gfx);
+                    }
 
-                        foreach (var columna in columnas)
+                    foreach (var dato in datosDelReporte)
+                    {
+                        if (usuarioAgrupador == dato.usuario)
                         {
-                            _dibujaColumnasReporte(columna, gfx);
+                            _margenTop += 15;
+                            _margenIzquierda = 50;
+                            _dibujaNumeroCertificado(gfx, dato.numeroCertificado);
+
+                            _margenIzquierda += 42;
+                            _dibujaNombreCertificado(gfx, dato.nombreCertificado);
+
+                            _margenIzquierda += 183; 
+                            _dibujaEmisionCertificado(gfx, dato.fechaEmisionCertificado);
+
+                            _margenIzquierda += 61;
+                            _dibujaMontoTransferencia(gfx, dato.montoDeTransferencia, dato.montoTransferencia);
+
+                            _margenIzquierda += 36;
+                            _dibujaFechaTransferencia(gfx, dato.fechaTransferencia);
+
+                            _margenIzquierda += 43;
+                            _dibujaAnotaciones(gfx, dato.anotaciones);
                         }
 
-                        foreach (var dato in datosDelReporte)
+                        if (_margenTop >= (alturaPagina - 94))
                         {
-                            if ((usuarioAgrupador == dato.usuario) && (sector == dato.sectorComercial))
-                            {
-                                _margenTop += 15;
-                                _margenIzquierda = 50;
-                                _dibujaNumeroCertificado(gfx, dato.numeroCertificado);
-
-                                _margenIzquierda += 42;
-                                _dibujaNombreCertificado(gfx, dato.nombreCertificado);
-
-                                _margenIzquierda += 115;
-                                _dibujaNombreCliente(gfx, dato.nombreCotizante);
-
-                                _margenIzquierda += 115; 
-                                _dibujaEmisionCertificado(gfx, dato.fechaEmisionCertificado);
-
-                                _margenIzquierda += 61;
-                                _dibujaMontoTransferencia(gfx, dato.montoDeTransferencia, dato.montoTransferencia);
-
-                                _margenIzquierda += 36;
-                                _dibujaFechaTransferencia(gfx, dato.fechaTransferencia);
-
-                                _margenIzquierda += 43;
-                                _dibujaAnotaciones(gfx, dato.anotaciones);
-                            }
-
-                            if (_margenTop >= (alturaPagina - 94))
-                            {
-                                _margenTop = 80;
-                                _margenIzquierda = 50;
+                            _margenTop = 80;
+                            _margenIzquierda = 50;
                             
-                                PdfPage paginaDos = documento.AddPage();
-                                gfx = XGraphics.FromPdfPage(paginaDos);
-                                tf = new XTextFormatter(gfx);
-                                gfx.DrawImage(_xImageMembrete, _margenIzquierda, 10, 430, 35);
-                            }
-
+                            PdfPage paginaDos = documento.AddPage();
+                            gfx = XGraphics.FromPdfPage(paginaDos);
+                            tf = new XTextFormatter(gfx);
+                            gfx.DrawImage(_xImageMembrete, _margenIzquierda, 10, 430, 35);
                         }
-
-                        _dibujaPieDelProximoAgrupador(gfx);
 
                     }
+
+                    _dibujaPieDelProximoAgrupador(gfx);
+
+                }
                 }
 
                 documento.Save(rutaDeDescarga + nombreArchivo);
@@ -227,7 +224,6 @@ namespace SICOREBackEnd.Models
         {
             var columnas = new List<iColumnas>();
             columnas.Add(new iColumnas { nombreColumna = "Cert." });
-            columnas.Add(new iColumnas { nombreColumna = "Nombre" });
             columnas.Add(new iColumnas { nombreColumna = "Cliente" });
             columnas.Add(new iColumnas { nombreColumna = "Emisión" });
             columnas.Add(new iColumnas { nombreColumna = "Monto" });
@@ -246,16 +242,12 @@ namespace SICOREBackEnd.Models
                     margen = 0;
                     break;
 
-                case "Nombre":
+                case "Cliente":
                     margen = 42;
                     break;
 
-                case "Cliente":
-                    margen = 115;
-                    break;
-
                 case "Emisión":
-                    margen = 115;
+                    margen = 183;
                     break;
 
                 case "Monto":
@@ -341,10 +333,10 @@ namespace SICOREBackEnd.Models
 
         private void _dibujaPieDelProximoAgrupador(XGraphics gfx)
         {
-            _margenTop += 20;
+            _margenTop += 15;
             int margenIzquierda = _margenIzquierda;
 
-            _margenIzquierda = 360;
+            _margenIzquierda = 320;
             _dibujaMontoTotalSumarizado(gfx);
             _montoTotalSumarizado = 0;
 
@@ -382,10 +374,9 @@ namespace SICOREBackEnd.Models
 
         private void _dibujaNumeroCertificado(XGraphics gfx, string numeroCertificado)
         {
-            var tf = new XTextFormatter(gfx);
-            var celdaColumnaReporte = new XRect(_margenIzquierda, _margenTop - 10, 42, 20);
+            var celdaColumnaReporte = new XRect(_margenIzquierda, _margenTop - 10, 42, 15);
             gfx.DrawRectangle(_xpen(), XBrushes.White, celdaColumnaReporte);
-            tf.DrawString(numeroCertificado, _fuentePequennaRegular(), XBrushes.Black,
+            gfx.DrawString(numeroCertificado, _fuentePequennaRegular(), XBrushes.Black,
                 new XRect(celdaColumnaReporte.X + 5, celdaColumnaReporte.Y + 5, celdaColumnaReporte.Width - 5, 34), _formato());
         }
 
@@ -399,38 +390,26 @@ namespace SICOREBackEnd.Models
 
         private void _dibujaNombreCertificado(XGraphics gfx, string nombreCertificado)
         {
-            var tf = new XTextFormatter(gfx);
-            var celdaColumnaReporte = new XRect(_margenIzquierda, _margenTop - 10, 115, 20);
+            var celdaColumnaReporte = new XRect(_margenIzquierda, _margenTop - 10, 183, 15);
             gfx.DrawRectangle(_xpen(), XBrushes.White, celdaColumnaReporte);
-            tf.DrawString(nombreCertificado, _fuentePequennaRegular(), XBrushes.Black,
-                new XRect(celdaColumnaReporte.X + 5, celdaColumnaReporte.Y + 5, celdaColumnaReporte.Width - 5, 34), _formato());
-        }
-
-        private void _dibujaNombreCliente(XGraphics gfx, string nombreCertificado)
-        {
-            var celdaColumnaReporte = new XRect(_margenIzquierda, _margenTop - 10, 115, 20);
-            var tf = new XTextFormatter(gfx);
-            gfx.DrawRectangle(_xpen(), XBrushes.White, celdaColumnaReporte);
-            tf.DrawString(nombreCertificado, _fuentePequennaRegular(), XBrushes.Black,
+            gfx.DrawString(nombreCertificado, _fuentePequennaRegular(), XBrushes.Black,
                 new XRect(celdaColumnaReporte.X + 5, celdaColumnaReporte.Y + 5, celdaColumnaReporte.Width - 5, 34), _formato());
         }
 
         private void _dibujaEmisionCertificado(XGraphics gfx, string fechaEmisionCertificado)
         {
-            var celdaColumnaReporte = new XRect(_margenIzquierda, _margenTop - 10, 61, 20);
-            var tf = new XTextFormatter(gfx);
+            var celdaColumnaReporte = new XRect(_margenIzquierda, _margenTop - 10, 61, 15);
             gfx.DrawRectangle(_xpen(), XBrushes.White, celdaColumnaReporte);
-            tf.DrawString(fechaEmisionCertificado, _fuentePequennaRegular(), XBrushes.Black,
+            gfx.DrawString(fechaEmisionCertificado, _fuentePequennaRegular(), XBrushes.Black,
                 new XRect(celdaColumnaReporte.X + 5, celdaColumnaReporte.Y + 5, celdaColumnaReporte.Width - 5, 34), _formato());
         }
 
         private void _dibujaMontoTransferencia(XGraphics gfx, string montoDeTransferencia, decimal montoTransferencia)
         {
-            var tf = new XTextFormatter(gfx);
-            var celdaColumnaReporte = new XRect(_margenIzquierda, _margenTop - 10, 37, 20);
+            var celdaColumnaReporte = new XRect(_margenIzquierda, _margenTop - 10, 37, 15);
             string monto = "$ " + montoDeTransferencia;
             gfx.DrawRectangle(_xpen(), XBrushes.White, celdaColumnaReporte);
-            tf.DrawString(monto, _fuentePequennaRegular(), XBrushes.Black,
+            gfx.DrawString(monto, _fuentePequennaRegular(), XBrushes.Black,
                 new XRect(celdaColumnaReporte.X + 5, celdaColumnaReporte.Y + 5, celdaColumnaReporte.Width - 5, 34), _formato());
 
             _montoTotalSumarizado += montoTransferencia;
@@ -438,19 +417,17 @@ namespace SICOREBackEnd.Models
 
         private void _dibujaFechaTransferencia(XGraphics gfx, string fechaTransferencia)
         {
-            var celdaColumnaReporte = new XRect(_margenIzquierda, _margenTop - 10, 45, 20);
-            var tf = new XTextFormatter(gfx);
+            var celdaColumnaReporte = new XRect(_margenIzquierda, _margenTop - 10, 45, 15);
             gfx.DrawRectangle(_xpen(), XBrushes.White, celdaColumnaReporte);
-            tf.DrawString(fechaTransferencia, _fuentePequennaRegular(), XBrushes.Black,
+            gfx.DrawString(fechaTransferencia, _fuentePequennaRegular(), XBrushes.Black,
                 new XRect(celdaColumnaReporte.X + 5, celdaColumnaReporte.Y + 5, celdaColumnaReporte.Width - 5, 34), _formato());
         }
 
         private void _dibujaAnotaciones(XGraphics gfx, string anotaciones)
         {
-            var celdaColumnaReporte = new XRect(_margenIzquierda, _margenTop - 10, 88, 20);
-            var tf = new XTextFormatter(gfx);
+            var celdaColumnaReporte = new XRect(_margenIzquierda, _margenTop - 10, 135, 15);
             gfx.DrawRectangle(_xpen(), XBrushes.White, celdaColumnaReporte);
-            tf.DrawString(anotaciones, _fuentePequennaRegular(), XBrushes.Black,
+            gfx.DrawString(anotaciones, _fuentePequennaRegular(), XBrushes.Black,
                 new XRect(celdaColumnaReporte.X + 5, celdaColumnaReporte.Y + 5, celdaColumnaReporte.Width - 5, 34), _formato());
         }
 

@@ -1,0 +1,35 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "http://localhost:85/WSRevisionFirma.svc"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, wcf_RevisaFirmaCertificado"
+    ],
+    "references": [
+      "Dapper, {Dapper, 2.1.4}",
+      "Dapper.Transaction, {Dapper.Transaction, 2.0.143}",
+      "Docnet.Core, {Docnet.Core, 2.6.0}",
+      "Microsoft.AspNetCore.Authentication.JwtBearer, {Microsoft.AspNetCore.Authentication.JwtBearer, 5.0.17}",
+      "Microsoft.IdentityModel.JsonWebTokens, {Microsoft.IdentityModel.JsonWebTokens, 6.7.1}",
+      "Microsoft.IdentityModel.Logging, {Microsoft.IdentityModel.Logging, 6.7.1}",
+      "Microsoft.IdentityModel.Protocols, {Microsoft.IdentityModel.Protocols, 6.7.1}",
+      "Microsoft.IdentityModel.Protocols.OpenIdConnect, {Microsoft.IdentityModel.Protocols.OpenIdConnect, 6.7.1}",
+      "Microsoft.IdentityModel.Tokens, {Microsoft.IdentityModel.Tokens, 6.7.1}",
+      "Microsoft.OpenApi, {Microsoft.OpenApi, 1.6.14}",
+      "Newtonsoft.Json, {Newtonsoft.Json, 13.0.3}",
+      "Swashbuckle.AspNetCore.Swagger, {Swashbuckle.AspNetCore.Swagger, 6.6.2}",
+      "Swashbuckle.AspNetCore.SwaggerGen, {Swashbuckle.AspNetCore.SwaggerGen, 6.6.2}",
+      "Swashbuckle.AspNetCore.SwaggerUI, {Swashbuckle.AspNetCore.SwaggerUI, 6.6.2}",
+      "System.Data.SqlClient, {System.Data.SqlClient, 4.8.5}",
+      "System.IdentityModel.Tokens.Jwt, {System.IdentityModel.Tokens.Jwt, 6.7.1}",
+      "System.Security.Cryptography.Cng, {System.Security.Cryptography.Cng, 4.5.0}"
+    ],
+    "targetFramework": "net5.0",
+    "typeReuseMode": "All"
+  }
+}

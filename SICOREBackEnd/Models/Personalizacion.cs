@@ -40,12 +40,6 @@ namespace SICOREBackEnd.Models
 		public string director { get; set; }
     }
 
-	public class iParametrosReporteEncuesta
-    {
-		public int consecutivo { get; set; }
-		public string textoAlternativoReporte { get; set; }
-	}
-
 	public class Personalizacion
 	{
 		static IConfiguration confSICORE = (new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile(Constantes.APP_SETTINGS).Build());
@@ -108,48 +102,6 @@ namespace SICOREBackEnd.Models
 			{
 				resultado = null;
 				string mensaje = ex.Message;
-			}
-
-			return resultado;
-		}
-
-		public async Task<IEnumerable<iParametrosReporteEncuesta>> ObtenerParametrosReporteEncuesta()
-		{
-			IEnumerable<iParametrosReporteEncuesta> resultado = null;
-			try
-			{
-				using (SqlConnection conexion = new SqlConnection(strconSICORE))
-				{
-					resultado = await conexion.QueryAsync<iParametrosReporteEncuesta>("PA_PARAMETROS_TRAE",
-						null, commandType: System.Data.CommandType.StoredProcedure);
-				}
-			}
-			catch (Exception ex)
-			{
-				resultado = null;
-				string mensaje = ex.Message;
-			}
-
-			return resultado;
-		}
-
-		public async Task<string> ActualizaParametrosReporte(iParametrosReporteEncuesta pParametros)
-		{
-			string resultado = string.Empty;
-			string objJsonDePersonalizacion = Newtonsoft.Json.JsonConvert.SerializeObject(pParametros);
-
-			try
-			{
-				using (SqlConnection conexion = new SqlConnection(strconSICORE))
-				{
-					var personalizacionParaActualizar = new { @pParametros = objJsonDePersonalizacion };
-					resultado = await conexion.ExecuteScalarAsync<string>("PA_PARAMETROS_ACTUALIZA",
-						personalizacionParaActualizar, commandType: System.Data.CommandType.StoredProcedure);
-				}
-			}
-			catch (Exception e)
-			{
-				string mensaje = e.Message;
 			}
 
 			return resultado;

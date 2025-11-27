@@ -51,35 +51,5 @@ namespace SICOREBackEnd.Controllers
 
             return Ok(resultado);
         }
-
-        [HttpGet("ObtenerParametrosReporteEncuesta")]
-        public async Task<IActionResult> ObtenerParametrosReporteEncuesta()
-        {
-            IEnumerable<iParametrosReporteEncuesta> resultado = null;
-
-            resultado = await clsPersonalizacion.ObtenerParametrosReporteEncuesta();
-
-            return Ok(resultado);
-        }
-
-        [HttpPut("ActualizaParametrosReporte")]
-        public async Task<IActionResult> ActualizaParametrosReporte([FromBody] iParametrosReporteEncuesta pParametros)
-        {
-            Resultado resultado = new Resultado();
-            string respuesta = await clsPersonalizacion.ActualizaParametrosReporte(pParametros);
-
-            if (respuesta == "1")
-            {
-                resultado.valor = respuesta;
-                resultado.descripcion = string.Empty;
-            }
-            else
-            {
-                resultado.valor = "-1";
-                resultado.descripcion = respuesta;
-            }
-
-            return Ok(resultado);
-        }
     }
 }

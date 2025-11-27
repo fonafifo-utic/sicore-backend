@@ -47,8 +47,6 @@ namespace SICOREBackEnd.Models
         public string contactoContador { get; set; }
         public string emailContador { get; set; }
         public string esGestor { get; set; }
-        public int idAgente { get; set; }
-        public string ucii { get; set; }
     }
 
     public class iSector
@@ -70,14 +68,6 @@ namespace SICOREBackEnd.Models
         public string actividadComercial { get; set; }
     }
 
-    public class iFuncionario
-    {
-        public int idUsuario { get; set; }
-        public string nombre { get; set; }
-        public string email { get; set; }
-        public string telefono { get; set; }
-    }
-
     public class Cliente
     {
         static IConfiguration confSICORE = (new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile(Constantes.APP_SETTINGS).Build());
@@ -96,26 +86,6 @@ namespace SICOREBackEnd.Models
             }
             catch
             {
-                resultado = null;
-            }
-
-            return resultado;
-        }
-
-        public async Task<IEnumerable<iCliente>> ObtenerListadoClientesPorAgente(int idAgente)
-        {
-            IEnumerable<iCliente> resultado = null;
-            try
-            {
-                using (SqlConnection conexion = new SqlConnection(strconSICORE))
-                {
-                    resultado = await conexion.QueryAsync<iCliente>("PA_CLIENTE_TRAE_LISTADO_POR_AGENTE",
-                        new { @pIdUsuario = idAgente }, commandType: System.Data.CommandType.StoredProcedure);
-                }
-            }
-            catch (Exception ex)
-            {
-                string mensaje = ex.Message;
                 resultado = null;
             }
 
@@ -332,25 +302,6 @@ namespace SICOREBackEnd.Models
                 using (SqlConnection conexion = new SqlConnection(strconSICORE))
                 {
                     resultado = await conexion.QueryAsync<iSector>("PA_CLIENTE_SECTOR_TRAE_LISTADO_COMPLETO",
-                        null, commandType: System.Data.CommandType.StoredProcedure);
-                }
-            }
-            catch
-            {
-                resultado = null;
-            }
-
-            return resultado;
-        }
-
-        public async Task<IEnumerable<iFuncionario>> ObtenerListadoFuncionarios()
-        {
-            IEnumerable<iFuncionario> resultado = null;
-            try
-            {
-                using (SqlConnection conexion = new SqlConnection(strconSICORE))
-                {
-                    resultado = await conexion.QueryAsync<iFuncionario>("PA_CLIENTE_TRAE_FUNCIONARIOS",
                         null, commandType: System.Data.CommandType.StoredProcedure);
                 }
             }

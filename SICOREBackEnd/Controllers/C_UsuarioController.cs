@@ -75,15 +75,6 @@ namespace SICOREBackEnd.Controllers
             return Ok(resultado);
         }
 
-        [HttpGet("ObtenerConfiguracionDeDFM/{idUsuario}")]
-        public async Task<IActionResult> ObtenerConfiguracionDeDFM(int idUsuario)
-        {
-            IEnumerable<iUsuarioConfiguradoDFM> resultado = null;
-            resultado = await clsFunciones.obtenerConfiguracionDeDFM(idUsuario);
-
-            return Ok(resultado);
-        }
-
         [HttpGet("ListarUsuariosRegistro")]
         public async Task<IActionResult> ListarUsuariosRegistro()
         {

@@ -50,8 +50,6 @@ namespace SICOREBackEnd.Models
 		public string justificacionCompra { get; set; }
 		public string ListaCotizacionPorId { get; set; }
 		public string observacionDeAprobacion { get; set; }
-		public string agenteCuenta { get; set; }
-		public string ucii { get; set; }
 	}
 
 	public class iCotizacionParaSalvar
@@ -88,37 +86,6 @@ namespace SICOREBackEnd.Models
 		public int idUsuario { get; set; }
 		public string observacion { get; set; }
 	}
-
-	public class iCotizacionAgrupada
-	{
-		public int idAgrupacion { get; set; }
-		public int idCotizacion { get; set; }
-		public int idCliente { get; set; }
-		public int consecutivo { get; set; }
-		public int idFuncionario { get; set; }
-		public string fechaHora { get; set; }
-		public string indicadorEstado { get; set; }
-	}
-
-	public class iListaCotizacionesAgrupadas
-	{
-		public int consecutivo { get; set; }
-		public string nombreCorto { get; set; }
-		public string fechaHora { get; set; }
-		public decimal montoDolares { get; set; }
-		public decimal cantidad { get; set; }
-		public string cotizaciones { get; set; }
-		public string indicadorEstado { get; set; }
-	}
-
-	public class iActualizaIncadorEstadoAgrupacion
-	{
-		public string indicadorEstado { get; set; }
-		public string justificacion { get; set; }
-		public int idFuncionario { get; set; }
-		public int consecutivo { get; set; }
-	}
-
 
 	public class Cotizacion
     {
@@ -261,130 +228,6 @@ namespace SICOREBackEnd.Models
 					var cotizacionParaActualizar = new { @pCotizacion = objJsonDeCotizacion };
 					resultado = await conexion.ExecuteScalarAsync<string>("PA_RECHAZA_COTIZACION",
 						cotizacionParaActualizar, commandType: System.Data.CommandType.StoredProcedure);
-				}
-			}
-			catch (Exception e)
-			{
-				string mensaje = e.Message;
-			}
-
-			return resultado;
-		}
-
-		public async Task<IEnumerable<iCotizacion>> ObtenerListadoCotizacionesActivas()
-		{
-			IEnumerable<iCotizacion> resultado = null;
-			try
-			{
-				using (SqlConnection conexion = new SqlConnection(strconSICORE))
-				{
-					resultado = await conexion.QueryAsync<iCotizacion>("PA_COTIZACION_TRAE_LISTADO_ACTIVAS",
-						null, commandType: System.Data.CommandType.StoredProcedure);
-				}
-			}
-			catch
-			{
-				resultado = null;
-			}
-
-			return resultado;
-		}
-
-		public async Task<string> IngresaCotizacionAgrupada(List<iCotizacionAgrupada> pCotizacion)
-		{
-			string resultado = string.Empty;
-			string objJsonDeCotizacion = Newtonsoft.Json.JsonConvert.SerializeObject(pCotizacion);
-
-			try
-			{
-				using (SqlConnection conexion = new SqlConnection(strconSICORE))
-				{
-					var cotizacionParaIngresar = new { @pCotizacion = objJsonDeCotizacion };
-					resultado = await conexion.ExecuteScalarAsync<string>("PA_COTIZACION_INGRESA_AGRUPADA",
-						cotizacionParaIngresar, commandType: System.Data.CommandType.StoredProcedure);
-				}
-			}
-			catch (Exception e)
-			{
-				string mensaje = e.Message;
-			}
-
-			return resultado;
-		}
-
-		public async Task<IEnumerable<iListaCotizacionesAgrupadas>> ObtenerListadoCotizacionesAgrupadas()
-		{
-			IEnumerable<iListaCotizacionesAgrupadas> resultado = null;
-			try
-			{
-				using (SqlConnection conexion = new SqlConnection(strconSICORE))
-				{
-					resultado = await conexion.QueryAsync<iListaCotizacionesAgrupadas>("PA_COTIZACION_TRAE_LISTADO_AGRUPADAS",
-						null, commandType: System.Data.CommandType.StoredProcedure);
-				}
-			}
-			catch
-			{
-				resultado = null;
-			}
-
-			return resultado;
-		}
-
-		public async Task<IEnumerable<iCotizacion>> ListaCotizacionPorConsecutivo(string pConsecutivos)
-		{
-			IEnumerable<iCotizacion> resultado = null;
-			try
-			{
-				using (SqlConnection conexion = new SqlConnection(strconSICORE))
-				{
-					var consecutivos = new { @pConsecutivos = pConsecutivos };
-					resultado = await conexion.QueryAsync<iCotizacion>("PA_COTIZACION_TRAE_PORCONSECUTIVO",
-						consecutivos, commandType: System.Data.CommandType.StoredProcedure);
-				}
-			}
-			catch
-			{
-				resultado = null;
-			}
-
-			return resultado;
-		}
-
-		public async Task<string> actualizaEstadoAgrupacion(iActualizaIncadorEstadoAgrupacion pCotizacion)
-		{
-			string resultado = string.Empty;
-			string objJsonDeCotizacion = Newtonsoft.Json.JsonConvert.SerializeObject(pCotizacion);
-
-			try
-			{
-				using (SqlConnection conexion = new SqlConnection(strconSICORE))
-				{
-					var cotizacion = new { @pCotizacion = objJsonDeCotizacion };
-					resultado = await conexion.ExecuteScalarAsync<string>("PA_COTIZACION_ACTUALIZA_AGRUPADAS",
-						cotizacion, commandType: System.Data.CommandType.StoredProcedure);
-				}
-			}
-			catch (Exception e)
-			{
-				string mensaje = e.Message;
-			}
-
-			return resultado;
-		}
-
-		public async Task<string> AnulaUnaAgrupacion(iAnulaCotizacion pCotizacion)
-		{
-			string resultado = string.Empty;
-			string objJsonDeCotizacion = Newtonsoft.Json.JsonConvert.SerializeObject(pCotizacion);
-
-			try
-			{
-				using (SqlConnection conexion = new SqlConnection(strconSICORE))
-				{
-					var cotizacionParaAnular = new { @pCotizacion = objJsonDeCotizacion };
-					resultado = await conexion.ExecuteScalarAsync<string>("PA_COTIZACION_ANULA_AGRUPACION",
-						cotizacionParaAnular, commandType: System.Data.CommandType.StoredProcedure);
 				}
 			}
 			catch (Exception e)

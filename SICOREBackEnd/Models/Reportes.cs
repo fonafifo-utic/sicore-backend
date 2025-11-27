@@ -33,7 +33,6 @@ namespace SICOREBackEnd.Models
         public string consecutivo { get; set; }
         public string sectorComercial { get; set; }
         public string nombreCertificado { get; set; }
-        public string nombreCotizante { get; set; }
         public string fechaEmisionCertificado { get; set; }
         public string fechaEmisionDelCertificado { get; set; }
         public string cedulaJuridicaComprador { get; set; }
@@ -107,7 +106,6 @@ namespace SICOREBackEnd.Models
         public string fecha_emision_certificado { get; set; }
         public string cedula_juridica_comprador { get; set; }
         public string monto_transferencia { get; set; }
-        public string monto_transferencia_colones { get; set; }
         public string numero_transferencia { get; set; }
         public string fecha_transferencia { get; set; }
         public string anno_inventario_GEI { get; set; }
@@ -142,7 +140,6 @@ namespace SICOREBackEnd.Models
         public string tipoCompra { get; set; }
         public string creditoDebito { get; set; }
         public string justificacionCompra { get; set; }
-        public string cuentaPago { get; set; }
         public string usuario { get; set; }
         public string funcionario { get; set; }
         public string rangoDeFechas { get; set; }
@@ -179,60 +176,6 @@ namespace SICOREBackEnd.Models
     {
         public int idSectorComercial { get; set; }
         public string sectorComercial { get; set; }
-    }
-
-    public class iReporteEsfuerzoAnualColaborador
-    {
-        public int idFuncionario { get; set; }
-        public string agente { get; set; }
-        public decimal cantidad { get; set; }
-        public decimal monto { get; set; }
-        public string ultimaVenta { get; set; }
-    }
-
-    public class iDesgloseEsfuerzoColaborador
-    {
-        public string certificado { get; set; }
-        public string cliente { get; set; }
-        public string fecha { get; set; }
-        public decimal cantidad { get; set; }
-        public decimal monto { get; set; }
-    }
-
-    public class iReporteEsfuerzoAnualColaboradorExcel
-    {
-        public string agente { get; set; }
-        public string ultimaVenta { get; set; }
-        public string certificado { get; set; }
-        public string cliente { get; set; }
-        public string fecha { get; set; }
-        public decimal cantidad { get; set; }
-        public decimal monto { get; set; }
-    }
-
-    public class iReporteEsfuerzoAnualColaboradorPDF
-    {
-        public int idFuncionario { get; set; }
-        public string agente { get; set; }
-        public decimal cantidad { get; set; }
-        public decimal monto { get; set; }
-        public string ultimaVenta { get; set; }
-        public List<iDesgloseEsfuerzoColaborador> desglose { get; set; }
-    }
-
-    public class iListadoEncuesta
-    {
-        public string pregunta { get; set; }
-        public string respuesta { get; set; }
-        public string personasQueContestaron { get; set; }
-        public string totalEncuestados { get; set; }
-        public string porcentaje { get; set; }
-    }
-
-    public class iListadoRespuestasPorAnno
-    {
-        public decimal formulariosRespondidos { get; set; }
-        public decimal formulariosEnviados { get; set; }
     }
 
     public class Reportes
@@ -437,126 +380,6 @@ namespace SICOREBackEnd.Models
                     var pParametro = new { @pParametros = objetoJsonParametro };
                     reporte = await conexion.QueryAsync<iSectoresComerciales>("PA_REPORTES_TRAE_SECTORES_COMERCIALES_COTIZACIONES",
                         pParametro, commandType: System.Data.CommandType.StoredProcedure);
-                }
-            }
-            catch
-            {
-                reporte = null;
-            }
-
-            return reporte;
-        }
-
-        public async Task<IEnumerable<iReporteEsfuerzoAnualColaborador>> TraeListadoAnualEsfuerzoColaborador()
-        {
-            IEnumerable<iReporteEsfuerzoAnualColaborador> reporte = null;
-            try
-            {
-                using (SqlConnection conexion = new SqlConnection(strconSICORE))
-                {
-                    reporte = await conexion.QueryAsync<iReporteEsfuerzoAnualColaborador>("PA_REPORTES_TRAE_LISTADO_ESFUERZO_ANUAL",
-                        null, commandType: System.Data.CommandType.StoredProcedure);
-                }
-            }
-            catch (Exception ex)
-            {
-                string mensaje = ex.Message;
-                reporte = null;
-            }
-
-            return reporte;
-        }
-
-        public async Task<IEnumerable<iDesgloseEsfuerzoColaborador>> TraeDesgloseEsfuerzoColaborador(int idFuncionario)
-        {
-            IEnumerable<iDesgloseEsfuerzoColaborador> reporte = null;
-            try
-            {
-                using (SqlConnection conexion = new SqlConnection(strconSICORE))
-                {
-                    reporte = await conexion.QueryAsync<iDesgloseEsfuerzoColaborador>("PA_REPORTES_TRAE_DETALLE_CERTIFICADOS_PORFUNCIONARIO",
-                        new { @pIdFuncionario = idFuncionario }, commandType: System.Data.CommandType.StoredProcedure);
-                }
-            }
-            catch (Exception ex)
-            {
-                string mensaje = ex.Message;
-                reporte = null;
-            }
-
-            return reporte;
-        }
-
-        public async Task<IEnumerable<iReporteEsfuerzoAnualColaboradorExcel>> ExportacionReporteDeEsfuerzoAnualExcel()
-        {
-            IEnumerable<iReporteEsfuerzoAnualColaboradorExcel> reporte = null;
-            try
-            {
-                using (SqlConnection conexion = new SqlConnection(strconSICORE))
-                {
-                    reporte = await conexion.QueryAsync<iReporteEsfuerzoAnualColaboradorExcel>("PA_REPORTES_TRAE_LISTADO_DETALLADO_ESFUERZO_EXCEL",
-                        null, commandType: System.Data.CommandType.StoredProcedure);
-                }
-            }
-            catch
-            {
-                reporte = null;
-            }
-
-            return reporte;
-        }
-
-        public async Task<IEnumerable<iReporteEsfuerzoAnualColaboradorPDF>> ExportacionReporteEsfuerzoPDF(int idFuncionario)
-        {
-            IEnumerable<iReporteEsfuerzoAnualColaboradorPDF> reporte = null;
-            try
-            {
-                using (SqlConnection conexion = new SqlConnection(strconSICORE))
-                {
-                    reporte = await conexion.QueryAsync<iReporteEsfuerzoAnualColaboradorPDF>("PA_REPORTES_TRAE_ESFUERZO_ANUAL_PORFUNCIONARIO",
-                        new { @pIdFuncionario = idFuncionario }, commandType: System.Data.CommandType.StoredProcedure);
-                }
-            }
-            catch (Exception ex)
-            {
-                string mensaje = ex.Message;
-                reporte = null;
-            }
-
-            return reporte;
-        }
-
-        public async Task<IEnumerable<iListadoEncuesta>> traeReporteEncuentas(iRangoFechaBusqueda rangoDeFechas)
-        {
-            IEnumerable<iListadoEncuesta> reporte = null;
-            try
-            {
-                var objetoJsonParametro = Newtonsoft.Json.JsonConvert.SerializeObject(rangoDeFechas);
-
-                using (SqlConnection conexion = new SqlConnection(strconSICORE))
-                {
-                    var pParametro = new { @pParametros = objetoJsonParametro };
-                    reporte = await conexion.QueryAsync<iListadoEncuesta>("PA_REPORTES_TRAE_LISTADO_ENCUENTAS",
-                        pParametro, commandType: System.Data.CommandType.StoredProcedure);
-                }
-            }
-            catch
-            {
-                reporte = null;
-            }
-
-            return reporte;
-        }
-
-        public async Task<IEnumerable<iListadoRespuestasPorAnno>> traeRespuestasPorAnno()
-        {
-            IEnumerable<iListadoRespuestasPorAnno> reporte = null;
-            try
-            {
-                using (SqlConnection conexion = new SqlConnection(strconSICORE))
-                {
-                    reporte = await conexion.QueryAsync<iListadoRespuestasPorAnno>("PA_ENCUESTA_TRAE_RESPUESTAS_PORANNO",
-                        null, commandType: System.Data.CommandType.StoredProcedure);
                 }
             }
             catch

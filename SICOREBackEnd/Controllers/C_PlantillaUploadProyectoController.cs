@@ -64,7 +64,7 @@ namespace SICOREBackEnd.Controllers
                         idCertificado = 0,
                         idCotizacion = 0,
                         idExpediente = 0,
-                        idFormalizacion = "",
+                        idFormalizacion = 0,
                         idFuncionario = pArchivoDeExpediente.idFuncionario,
                         idProyecto = pArchivoDeExpediente.idProyecto,
                         nombreArchivo = nombreArchivoConFormato,

@@ -23,9 +23,9 @@ namespace SICOREBackEnd.Models
 
 	public class iFormalizacion
     {
-		public string idFormalizacion { get; set; }
-		public string idCotizacion { get; set; }
-		public string idCliente { get; set; }
+		public int idFormalizacion { get; set; }
+		public int idCotizacion { get; set; }
+		public int idCliente { get; set; }
 		public string cedulaCliente { get; set; }
 		public string nombreCliente { get; set; }
 		public string nombreComercial { get; set; }
@@ -38,11 +38,10 @@ namespace SICOREBackEnd.Models
 		public string  numeroComprobante { get; set; }
 		public string indicadorEstado { get; set; }
 		public string creditoDebito { get; set; }
-		public string idUsuario { get; set; }
+		public int idUsuario { get; set; }
 		public string usuario { get; set; }
 		public string tieneFacturas { get; set; }
 		public decimal tipoCambio { get; set; }
-		public string ucii { get; set; }
 
 	}
 
@@ -60,12 +59,11 @@ namespace SICOREBackEnd.Models
 		public string justificacionCompra { get; set; }
 		public string indicadorEstado { get; set; }
 		public string creditoDebito { get; set; }
-		public string numeroCIIU { get; set; }
 	}
 
 	public class iActualizaFormalizacion
 	{
-		public string idFormalizacion { get; set; }
+		public int idFormalizacion { get; set; }
 		public int idUsuario { get; set; }
 		public string indicadorEstado { get; set; }
 		public string tieneFacturas { get; set; }
@@ -106,7 +104,6 @@ namespace SICOREBackEnd.Models
 		public string contactoContador { get; set; }
 		public string emailContador { get; set; }
 		public string justificacionActivacion { get; set; }
-		public string numeroCIIU { get; set; }
 	}
 
 	public class iRutaFacturaFormalizacion
@@ -132,7 +129,7 @@ namespace SICOREBackEnd.Models
 
 	public class iActivaFormalizacion
 	{
-		public string idFormalizacion { get; set; }
+		public int consecutivo { get; set; }
 	}
 
 	public class iPeticionActivarFormalizacion
@@ -199,9 +196,8 @@ namespace SICOREBackEnd.Models
 						null, commandType: System.Data.CommandType.StoredProcedure);
 				}
 			}
-			catch(Exception ex)
+			catch
 			{
-				string mensaje = ex.Message;
 				resultado = null;
 			}
 
@@ -228,7 +224,7 @@ namespace SICOREBackEnd.Models
 			return resultado;
 		}
 
-		public async Task<IEnumerable<iVerUnaFormalizacion>> ObtenerFormalizacionParaVistaPorId(string pIdFormalizacion)
+		public async Task<IEnumerable<iVerUnaFormalizacion>> ObtenerFormalizacionParaVistaPorId(int pIdFormalizacion)
 		{
 			IEnumerable<iVerUnaFormalizacion> resultado = null;
 			try
@@ -357,7 +353,7 @@ namespace SICOREBackEnd.Models
 			return resultado;
 		}
 
-		public async Task<IEnumerable<iRutaFacturaFormalizacion>> ObtenerRutaFacturaPorId(string pIdFormalizacion)
+		public async Task<IEnumerable<iRutaFacturaFormalizacion>> ObtenerRutaFacturaPorId(int pIdFormalizacion)
 		{
 			IEnumerable<iRutaFacturaFormalizacion> resultado = null;
 			try
@@ -440,19 +436,13 @@ namespace SICOREBackEnd.Models
 			string annoActual = DateTime.Now.Year.ToString();
 			string resultado = string.Empty;
 			string objJsonFormalizacion = Newtonsoft.Json.JsonConvert.SerializeObject(pFormalizacion);
-			string prefijoDeLaCotizacion = "DDC-CO-";
-
-			if(pFormalizacion.idFormalizacion.Contains(','))
-            {
-				prefijoDeLaCotizacion = "DDC-AG-";
-			}
 
 			var enviarFormalizacion = new iEnviaFormalizacion()
 			{
 				asunto = "Notificación SICORE",
 				destinatario = "",
 				idFuncionario = pFormalizacion.idUsuario,
-				numeroFormalizacion = prefijoDeLaCotizacion + poneCerosFormalizacion(pFormalizacion.consecutivo) + "-" + annoActual.ToString()
+				numeroFormalizacion = "DDC-CO-" + poneCerosFormalizacion(pFormalizacion.consecutivo) + "-" + annoActual.ToString()
 			};
 
 			string objJsonDeEnviarFormalizacion = Newtonsoft.Json.JsonConvert.SerializeObject(enviarFormalizacion);
@@ -513,13 +503,13 @@ namespace SICOREBackEnd.Models
 			return resultadoEnvio;
         }
 
-		public async Task<string> activaRevisionDeFormalizacion(string idFormalizacion)
+		public async Task<string> activaRevisionDeFormalizacion(int consecutivo)
 		{
 			string resultadoEnvio = string.Empty;
 
 			var activaFormalizacion = new iActivaFormalizacion()
 			{
-				idFormalizacion = idFormalizacion
+				consecutivo = consecutivo
 			};
 
 			string objJsonDeActivacion = Newtonsoft.Json.JsonConvert.SerializeObject(activaFormalizacion);
@@ -563,47 +553,6 @@ namespace SICOREBackEnd.Models
 			}
 
 			return resultadoEnvio;
-		}
-
-		public async Task<string> registraUnaFormalizacionAgrupada(iFormalizacionParaSalvar pRevisionFinanciera)
-		{
-			string resultado = string.Empty;
-			string resultadoEnvio = string.Empty;
-			string objJsonDeFormalizacion = Newtonsoft.Json.JsonConvert.SerializeObject(pRevisionFinanciera);
-			string annoActual = DateTime.Now.Year.ToString();
-
-			var enviarFormalizacion = new iEnviaFormalizacion()
-			{
-				asunto = "Notificación SICORE",
-				destinatario = string.Empty,
-				idFuncionario = pRevisionFinanciera.idFuncionario,
-				numeroFormalizacion = "DDC-AG-" + poneCerosFormalizacion(pRevisionFinanciera.consecutivo) + "-" + annoActual
-			};
-
-			string objJsonDeEnviarFormalizacion = Newtonsoft.Json.JsonConvert.SerializeObject(enviarFormalizacion);
-
-			try
-			{
-				using (SqlConnection conexion = new SqlConnection(strconSICORE))
-				{
-					var formalizacionParaIngresar = new { @pFormalizacion = objJsonDeFormalizacion };
-					resultado = await conexion.ExecuteScalarAsync<string>("PA_FORMALIZACION_INGRESA_DESDE_AGRUPACION",
-						formalizacionParaIngresar, commandType: System.Data.CommandType.StoredProcedure);
-				}
-
-				using (SqlConnection conexion = new SqlConnection(strconSICORE))
-				{
-					var formalizacionParaEnviar = new { @pFormalizacion = objJsonDeEnviarFormalizacion };
-					resultadoEnvio = await conexion.ExecuteScalarAsync<string>(ConstantesPARevisionFinanciera.PA_ENVIAR_FORMALIZACION,
-						formalizacionParaEnviar, commandType: System.Data.CommandType.StoredProcedure);
-				}
-			}
-			catch (Exception e)
-			{
-				string mensaje = e.Message;
-			}
-
-			return resultado;
 		}
 
 		private string poneCerosFormalizacion (int consecutivo)

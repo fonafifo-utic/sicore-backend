@@ -23,11 +23,11 @@ namespace SICOREBackEnd.Models
 	}
 	public class iCertificado
     {
-		public string idCertificado { get; set; }
-		public string idFormalizacion { get; set; }
-		public string idCotizacion { get; set; }
-		public string idFuncionario { get; set; }
-		public string idCliente { get; set; }
+		public int idCertificado { get; set; }
+		public int idFormalizacion { get; set; }
+		public int idCotizacion { get; set; }
+		public int idFuncionario { get; set; }
+		public int idCliente { get; set; }
 		public string usuario { get; set; }
 		public int numeroCertificado { get; set; }
 		public string nombreCertificado { get; set; }
@@ -40,9 +40,7 @@ namespace SICOREBackEnd.Models
 		public string consecutivo { get; set; }
 		public string nombreArchivo { get; set; }
 		public string anotaciones { get; set; }
-		public string numeroIdentificacionUnico { get; set; } //
-		public string indicadorEstado { get; set; }
-		public string numeroCertificadoUnico { get; set; }
+		public string numeroIdentificacionUnico { get; set; }
 	}
 
 	public class iVistaCertificado
@@ -70,7 +68,7 @@ namespace SICOREBackEnd.Models
 		public string enIngles { get; set; }
 		public string indicadorEstado { get; set; }
 		public string justificacionEdicion { get; set; }
-		public string numeroCertificadoUnico { get; set; }
+		
 	}
 
 	public class iRutaCertificado
@@ -87,13 +85,12 @@ namespace SICOREBackEnd.Models
 		public string numeroCertificado { get; set; }
 		public int idFuncionario { get; set; }
 		public int idCotizacion { get; set; }
-		public bool enviaEncuesta { get; set; }
 	}
 
 	public class iPoneObservacionesAlCertificado
     {
 		public int idFuncionario { get; set; }
-		public string idCertificado { get; set; }
+		public int idCertificado { get; set; }
 		public string observacion { get; set; }
 		public string nombreCertificado { get; set; }
 		public string cedulaJuridica { get; set; }
@@ -155,7 +152,7 @@ namespace SICOREBackEnd.Models
 			return resultado;
 		}
 
-		public async Task<IEnumerable<iVistaCertificado>> ObtenerCertificadoPorId(string pIdCertificado)
+		public async Task<IEnumerable<iVistaCertificado>> ObtenerCertificadoPorId(int pIdCertificado)
 		{
 			IEnumerable<iVistaCertificado> resultado = null;
 			try

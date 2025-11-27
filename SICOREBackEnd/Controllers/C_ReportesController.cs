@@ -78,42 +78,5 @@ namespace SICOREBackEnd.Controllers
 
             return Ok(resultado);
         }
-
-        [HttpGet("TraeListadoAnualEsfuerzoColaborador")]
-        public async Task<IActionResult> TraeListadoAnualEsfuerzoColaborador()
-        {
-            IEnumerable<iReporteEsfuerzoAnualColaborador> resultado = null;
-
-            resultado = await reporte.TraeListadoAnualEsfuerzoColaborador();
-
-            return Ok(resultado);
-        }
-
-        [HttpGet("TraeDesgloseEsfuerzoColaborador/{idFuncionario}")]
-        public async Task<IActionResult> TraeDesgloseEsfuerzoColaborador(int idFuncionario)
-        {
-            IEnumerable<iDesgloseEsfuerzoColaborador> resultado = null;
-
-            resultado = await reporte.TraeDesgloseEsfuerzoColaborador(idFuncionario);
-
-            return Ok(resultado);
-        }
-
-        [HttpPost("TraeReporteEncuentas")]
-        public async Task<IActionResult> TraeReporteEncuentas([FromBody] iRangoFechaBusqueda rangoFechas)
-        {
-
-            IEnumerable<iListadoEncuesta> resultado = await reporte.traeReporteEncuentas(rangoFechas);
-
-            return Ok(resultado);
-        }
-
-        [HttpGet("TraeRespuestasPorAnno")]
-        public async Task<IActionResult> TraeRespuestasPorAnno()
-        {
-            IEnumerable<iListadoRespuestasPorAnno> datosDelReporte = await reporte.traeRespuestasPorAnno();
-
-            return Ok(datosDelReporte);
-        }
     }
 }

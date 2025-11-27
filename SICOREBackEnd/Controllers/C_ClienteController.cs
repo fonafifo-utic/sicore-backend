@@ -24,16 +24,6 @@ namespace SICOREBackEnd.Controllers
             return Ok(resultado);
         }
 
-        [HttpGet("ListarClientesPorAgente/{idAgente}")]
-        public async Task<IActionResult> ListarClientesPorAgente(int idAgente)
-        {
-            IEnumerable<iCliente> resultado = null;
-
-            resultado = await clsCliente.ObtenerListadoClientesPorAgente(idAgente);
-
-            return Ok(resultado);
-        }
-
         [HttpGet("ListaClientePorId/{idCliente}")]
         public async Task<IActionResult> ListaClientePorId(int idCliente)
         {
@@ -175,16 +165,6 @@ namespace SICOREBackEnd.Controllers
             IEnumerable<iSector> resultado = null;
 
             resultado = await clsCliente.ObtenerListadoCompletoSectores();
-
-            return Ok(resultado);
-        }
-
-        [HttpGet("ListarFuncionarios")]
-        public async Task<IActionResult> ListarFuncionarios()
-        {
-            IEnumerable<iFuncionario> resultado = null;
-
-            resultado = await clsCliente.ObtenerListadoFuncionarios();
 
             return Ok(resultado);
         }

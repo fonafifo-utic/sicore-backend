@@ -46,7 +46,7 @@ namespace SICOREBackEnd.Controllers
         }
 
         [HttpGet("ListaCertificadoPorId/{idCertificado}")]
-        public async Task<IActionResult> ListaCertificadoPorId(string idCertificado)
+        public async Task<IActionResult> ListaCertificadoPorId(int idCertificado)
         {
             IEnumerable<iVistaCertificado> resultado = null;
 
@@ -120,8 +120,7 @@ namespace SICOREBackEnd.Controllers
                 enlace = pCertificado.enlaceEncuesta,
                 idFuncionario = pCertificado.idFuncionario,
                 idCotizacion = pCertificado.idCotizacion,
-                numeroCertificado = pCertificado.numeroCertificado,
-                enviaEncuesta = pCertificado.enviaEncuesta
+                numeroCertificado = pCertificado.numeroCertificado
             };
 
             string respuesta = await clsCertificado.EnviaCertificado(certificado);

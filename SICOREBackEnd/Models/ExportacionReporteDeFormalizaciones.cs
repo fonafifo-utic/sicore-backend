@@ -85,7 +85,7 @@ namespace SICOREBackEnd.Models
 
                         foreach (var dato in datosDelReporte)
                         {
-                            if ((usuarioAgrupador == dato.usuario) && (sector == dato.sectorComercial))
+                            if (usuarioAgrupador == dato.usuario)
                             {
                                 _margenTop += 15;
                                 _margenIzquierda = 50;
@@ -104,12 +104,9 @@ namespace SICOREBackEnd.Models
                                 _dibujaNumeroTransferencia(gfx, dato.numeroTransferencia);
 
                                 _margenIzquierda += 42;
-                                _dibujaNumeroFactura(gfx, dato.cuentaPago);
-
-                                _margenIzquierda += 96;
                                 _dibujaNumeroFactura(gfx, dato.numeroFacturaFonafifo);
 
-                                _margenIzquierda += 85;
+                                _margenIzquierda += 96;
                                 _dibujaCreditoOrDebito(gfx, dato.creditoDebito);
 
                                 _margenIzquierda += 42;
@@ -231,7 +228,6 @@ namespace SICOREBackEnd.Models
             columnas.Add(new iColumnas { nombreColumna = "Fecha" });
             columnas.Add(new iColumnas { nombreColumna = "Monto" });
             columnas.Add(new iColumnas { nombreColumna = "Comp." });
-            columnas.Add(new iColumnas { nombreColumna = "Cuenta" });
             columnas.Add(new iColumnas { nombreColumna = "Factura" });
             columnas.Add(new iColumnas { nombreColumna = "Tipo" });
             columnas.Add(new iColumnas { nombreColumna = "Compra" });
@@ -264,16 +260,12 @@ namespace SICOREBackEnd.Models
                     margen = 40;
                     break;
 
-                case "Cuenta":
+                case "Factura":
                     margen = 40;
                     break;
 
-                case "Factura":
-                    margen = 94;
-                    break;
-
                 case "Tipo":
-                    margen = 90;
+                    margen = 94;
                     break;
 
                 case "Compra":
@@ -354,7 +346,7 @@ namespace SICOREBackEnd.Models
                 new XRect(celdaAgrupadora.X + 5, celdaAgrupadora.Y + 5, celdaAgrupadora.Width - 5, 34), _formato());
 
             _margenTop += 18;
-            var celda = new XRect(_margenIzquierda, _margenTop - 10, anchoPagina - 119, 15);
+            var celda = new XRect(_margenIzquierda, _margenTop - 10, anchoPagina - 204, 15);
             gfx.DrawRectangle(_xpen(), XBrushes.LightGray, celda);
         }
 
@@ -459,13 +451,6 @@ namespace SICOREBackEnd.Models
             var celdaColumnaReporte = new XRect(_margenIzquierda, _margenTop - 10, 42, 15);
             gfx.DrawRectangle(_xpen(), XBrushes.White, celdaColumnaReporte);
             gfx.DrawString(numeroTransferencia, _fuentePequennaRegular(), XBrushes.Black,
-                new XRect(celdaColumnaReporte.X + 5, celdaColumnaReporte.Y + 5, celdaColumnaReporte.Width - 5, 34), _formato());
-        }
-        private void _dibujaCuentaPago(XGraphics gfx, string cuentaPago)
-        {
-            var celdaColumnaReporte = new XRect(_margenIzquierda, _margenTop - 10, 96, 15);
-            gfx.DrawRectangle(_xpen(), XBrushes.White, celdaColumnaReporte);
-            gfx.DrawString(cuentaPago, _fuentePequennaRegular(), XBrushes.Black,
                 new XRect(celdaColumnaReporte.X + 5, celdaColumnaReporte.Y + 5, celdaColumnaReporte.Width - 5, 34), _formato());
         }
 

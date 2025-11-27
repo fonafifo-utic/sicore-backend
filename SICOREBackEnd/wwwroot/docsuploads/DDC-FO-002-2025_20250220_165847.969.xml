@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FacturaElectronica xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.3/facturaElectronica">
+  <Clave>50601112400310174740600100001010061814153100000000</Clave>
+  <CodigoActividad>642002</CodigoActividad>
+  <NumeroConsecutivo>00100001010061814153</NumeroConsecutivo>
+  <FechaEmision>2024-11-01T00:33:16-06:00</FechaEmision>
+  <Emisor>
+    <Nombre>LIBERTY SERVICIOS FIJOS LY, S.A.</Nombre>
+    <Identificacion>
+      <Tipo>02</Tipo>
+      <Numero>3101747406</Numero>
+    </Identificacion>
+    <Ubicacion>
+      <Provincia>1</Provincia>
+      <Canton>02</Canton>
+      <Distrito>03</Distrito>
+      <Barrio>14</Barrio>
+      <OtrasSenas>Centro Corp. El Cedral, SJ, CR 10203</OtrasSenas>
+    </Ubicacion>
+    <Telefono>
+      <CodigoPais>506</CodigoPais>
+      <NumTelefono>47017777</NumTelefono>
+    </Telefono>
+    <Fax xsi:nil="true" />
+    <CorreoElectronico>factura.electronicacr@libertycr.com</CorreoElectronico>
+  </Emisor>
+  <Receptor>
+    <Nombre>ALVARO JOSE ZAMORA SOLIS</Nombre>
+    <Identificacion>
+      <Tipo>01</Tipo>
+      <Numero>111200935</Numero>
+    </Identificacion>
+  </Receptor>
+  <CondicionVenta>01</CondicionVenta>
+  <PlazoCredito />
+  <MedioPago>01</MedioPago>
+  <DetalleServicio>
+    <LineaDetalle>
+      <NumeroLinea>1</NumeroLinea>
+      <Codigo>8462200000000</Codigo>
+      <CodigoComercial>
+        <Tipo>01</Tipo>
+        <Codigo>01023065</Codigo>
+      </CodigoComercial>
+      <Cantidad>1</Cantidad>
+      <UnidadMedida>Os</UnidadMedida>
+      <Detalle>NEXT TV FMC 150</Detalle>
+      <PrecioUnitario>5801.60000</PrecioUnitario>
+      <MontoTotal>5801.60000</MontoTotal>
+      <Descuento>
+        <MontoDescuento>726.94000</MontoDescuento>
+        <NaturalezaDescuento>DESCUENTO APLICADO</NaturalezaDescuento>
+      </Descuento>
+      <SubTotal>5074.66000</SubTotal>
+      <Impuesto>
+        <Codigo>01</Codigo>
+        <CodigoTarifa>08</CodigoTarifa>
+        <Tarifa>13.00</Tarifa>
+        <Monto>659.71000</Monto>
+      </Impuesto>
+      <MontoTotalLinea>5734.37000</MontoTotalLinea>
+    </LineaDetalle>
+    <LineaDetalle>
+      <NumeroLinea>2</NumeroLinea>
+      <Codigo>8462200000000</Codigo>
+      <CodigoComercial>
+        <Tipo>01</Tipo>
+        <Codigo>01023156</Codigo>
+      </CodigoComercial>
+      <Cantidad>2</Cantidad>
+      <UnidadMedida>Os</UnidadMedida>
+      <Detalle>SMARTSTICK</Detalle>
+      <PrecioUnitario>2163.00000</PrecioUnitario>
+      <MontoTotal>4326.00000</MontoTotal>
+      <SubTotal>4326.00000</SubTotal>
+      <Impuesto>
+        <Codigo>01</Codigo>
+        <CodigoTarifa>08</CodigoTarifa>
+        <Tarifa>13.00</Tarifa>
+        <Monto>562.38000</Monto>
+      </Impuesto>
+      <MontoTotalLinea>4888.38000</MontoTotalLinea>
+    </LineaDetalle>
+    <LineaDetalle>
+      <NumeroLinea>3</NumeroLinea>
+      <Codigo>7312500000000</Codigo>
+      <CodigoComercial>
+        <Tipo>01</Tipo>
+        <Codigo>02022799</Codigo>
+      </CodigoComercial>
+      <Cantidad>1</Cantidad>
+      <UnidadMedida>Os</UnidadMedida>
+      <Detalle>ALQUILER MODEM TG2482</Detalle>
+      <PrecioUnitario>1966.00000</PrecioUnitario>
+      <MontoTotal>1966.00000</MontoTotal>
+      <SubTotal>1966.00000</SubTotal>
+      <Impuesto>
+        <Codigo>01</Codigo>
+        <CodigoTarifa>08</CodigoTarifa>
+        <Tarifa>13.00</Tarifa>
+        <Monto>255.58000</Monto>
+      </Impuesto>
+      <MontoTotalLinea>2221.58000</MontoTotalLinea>
+    </LineaDetalle>
+    <LineaDetalle>
+      <NumeroLinea>4</NumeroLinea>
+      <Codigo>8422200000000</Codigo>
+      <CodigoComercial>
+        <Tipo>01</Tipo>
+        <Codigo>02023224</Codigo>
+      </CodigoComercial>
+      <Cantidad>1</Cantidad>
+      <UnidadMedida>Os</UnidadMedida>
+      <Detalle>300_INTERNET LY 300MBPS/30MBPS_FMC_2023</Detalle>
+      <PrecioUnitario>16016.81000</PrecioUnitario>
+      <MontoTotal>16016.81000</MontoTotal>
+      <SubTotal>16016.81000</SubTotal>
+      <Impuesto>
+        <Codigo>01</Codigo>
+        <CodigoTarifa>08</CodigoTarifa>
+        <Tarifa>13.00</Tarifa>
+        <Monto>2082.19000</Monto>
+      </Impuesto>
+      <MontoTotalLinea>18099.00000</MontoTotalLinea>
+    </LineaDetalle>
+    <LineaDetalle>
+      <NumeroLinea>5</NumeroLinea>
+      <Codigo>8412000000000</Codigo>
+      <CodigoComercial>
+        <Tipo>01</Tipo>
+        <Codigo>03020011</Codigo>
+      </CodigoComercial>
+      <Cantidad>1</Cantidad>
+      <UnidadMedida>Os</UnidadMedida>
+      <Detalle>IDENTIFICADOR DE LLAMADAS</Detalle>
+      <PrecioUnitario>0.00000</PrecioUnitario>
+      <MontoTotal>0.00000</MontoTotal>
+      <SubTotal>0.00000</SubTotal>
+      <MontoTotalLinea>0.00000</MontoTotalLinea>
+    </LineaDetalle>
+    <LineaDetalle>
+      <NumeroLinea>6</NumeroLinea>
+      <Codigo>8412000000000</Codigo>
+      <CodigoComercial>
+        <Tipo>01</Tipo>
+        <Codigo>03020012</Codigo>
+      </CodigoComercial>
+      <Cantidad>1</Cantidad>
+      <UnidadMedida>Os</UnidadMedida>
+      <Detalle>DESVIACION DE LLAMADAS</Detalle>
+      <PrecioUnitario>0.00000</PrecioUnitario>
+      <MontoTotal>0.00000</MontoTotal>
+      <SubTotal>0.00000</SubTotal>
+      <MontoTotalLinea>0.00000</MontoTotalLinea>
+    </LineaDetalle>
+    <LineaDetalle>
+      <NumeroLinea>7</NumeroLinea>
+      <Codigo>8412000000000</Codigo>
+      <CodigoComercial>
+        <Tipo>01</Tipo>
+        <Codigo>03020013</Codigo>
+      </CodigoComercial>
+      <Cantidad>1</Cantidad>
+      <UnidadMedida>Os</UnidadMedida>
+      <Detalle>LLAMADA EN ESPERA</Detalle>
+      <PrecioUnitario>0.00000</PrecioUnitario>
+      <MontoTotal>0.00000</MontoTotal>
+      <SubTotal>0.00000</SubTotal>
+      <MontoTotalLinea>0.00000</MontoTotalLinea>
+    </LineaDetalle>
+    <LineaDetalle>
+      <NumeroLinea>8</NumeroLinea>
+      <Codigo>8412000000000</Codigo>
+      <CodigoComercial>
+        <Tipo>01</Tipo>
+        <Codigo>03020014</Codigo>
+      </CodigoComercial>
+      <Cantidad>1</Cantidad>
+      <UnidadMedida>Os</UnidadMedida>
+      <Detalle>CONFERENCIA TRIPARTITA</Detalle>
+      <PrecioUnitario>0.00000</PrecioUnitario>
+      <MontoTotal>0.00000</MontoTotal>
+      <SubTotal>0.00000</SubTotal>
+      <MontoTotalLinea>0.00000</MontoTotalLinea>
+    </LineaDetalle>
+    <LineaDetalle>
+      <NumeroLinea>9</NumeroLinea>
+      <Codigo>8412000000000</Codigo>
+      <CodigoComercial>
+        <Tipo>01</Tipo>
+        <Codigo>03020033</Codigo>
+      </CodigoComercial>
+      <Cantidad>1</Cantidad>
+      <UnidadMedida>Os</UnidadMedida>
+      <Detalle>CASILLERO DE VOZ BASICO</Detalle>
+      <PrecioUnitario>0.00000</PrecioUnitario>
+      <MontoTotal>0.00000</MontoTotal>
+      <SubTotal>0.00000</SubTotal>
+      <MontoTotalLinea>0.00000</MontoTotalLinea>
+    </LineaDetalle>
+    <LineaDetalle>
+      <NumeroLinea>10</NumeroLinea>
+      <Codigo>8412000000000</Codigo>
+      <CodigoComercial>
+        <Tipo>01</Tipo>
+        <Codigo>03020046</Codigo>
+      </CodigoComercial>
+      <Cantidad>1</Cantidad>
+      <UnidadMedida>Os</UnidadMedida>
+      <Detalle>BLOQUEO LLAMADA INTERNACIONAL</Detalle>
+      <PrecioUnitario>0.00000</PrecioUnitario>
+      <MontoTotal>0.00000</MontoTotal>
+      <SubTotal>0.00000</SubTotal>
+      <MontoTotalLinea>0.00000</MontoTotalLinea>
+    </LineaDetalle>
+    <LineaDetalle>
+      <NumeroLinea>11</NumeroLinea>
+      <Codigo>8412000000000</Codigo>
+      <CodigoComercial>
+        <Tipo>01</Tipo>
+        <Codigo>03023233</Codigo>
+      </CodigoComercial>
+      <Cantidad>1</Cantidad>
+      <UnidadMedida>Os</UnidadMedida>
+      <Detalle>TELEFONÍA HFC FMC</Detalle>
+      <PrecioUnitario>0.89000</PrecioUnitario>
+      <MontoTotal>0.89000</MontoTotal>
+      <SubTotal>0.89000</SubTotal>
+      <Impuesto>
+        <Codigo>01</Codigo>
+        <CodigoTarifa>08</CodigoTarifa>
+        <Tarifa>13.00</Tarifa>
+        <Monto>0.12000</Monto>
+      </Impuesto>
+      <MontoTotalLinea>1.01000</MontoTotalLinea>
+    </LineaDetalle>
+  </DetalleServicio>
+  <OtrosCargos>
+    <TipoDocumento>99</TipoDocumento>
+    <NumeroIdentidadTercero />
+    <NombreTercero />
+    <Detalle>CARGO 911 0.75%</Detalle>
+    <MontoCargo>120.14000</MontoCargo>
+  </OtrosCargos>
+  <OtrosCargos>
+    <TipoDocumento>99</TipoDocumento>
+    <NumeroIdentidadTercero />
+    <NombreTercero />
+    <Detalle>CARGO CRUZ ROJA 1%</Detalle>
+    <MontoCargo>160.18000</MontoCargo>
+  </OtrosCargos>
+  <ResumenFactura>
+    <CodigoTipoMoneda>
+      <CodigoMoneda>CRC</CodigoMoneda>
+      <TipoCambio>515.48</TipoCambio>
+    </CodigoTipoMoneda>
+    <TotalServGravados>28111.30000</TotalServGravados>
+    <TotalServExentos>0.00000</TotalServExentos>
+    <TotalServExonerado>0.00000</TotalServExonerado>
+    <TotalMercanciasGravadas>0.00000</TotalMercanciasGravadas>
+    <TotalMercanciasExentas>0.00000</TotalMercanciasExentas>
+    <TotalMercExonerada>0.00000</TotalMercExonerada>
+    <TotalGravado>28111.30000</TotalGravado>
+    <TotalExento>0.00000</TotalExento>
+    <TotalExonerado>0.00000</TotalExonerado>
+    <TotalVenta>28111.30000</TotalVenta>
+    <TotalDescuentos>726.94000</TotalDescuentos>
+    <TotalVentaNeta>27384.36000</TotalVentaNeta>
+    <TotalImpuesto>3559.98000</TotalImpuesto>
+    <TotalIVADevuelto>0</TotalIVADevuelto>
+    <TotalOtrosCargos>280.32000</TotalOtrosCargos>
+    <TotalComprobante>31224.66000</TotalComprobante>
+  </ResumenFactura>
+  <Otros>
+    <OtroTexto codigo="NumeroContrato">0001179626</OtroTexto>
+    <OtroTexto codigo="NumerosTelefono">85246786 85246786</OtroTexto>
+    <OtroTexto codigo="Observaciones" />
+    <OtroTexto codigo="RecargoMora">Si cancela posterior al día 20 del mes, en su próxima factura se cobrará un recargo por mora de: 1600.00</OtroTexto>
+    <OtroTexto codigo="FechaPeriodo">NOVIEMBRE 2024</OtroTexto>
+    <OtroTexto codigo="NumeroIdentificacionImpresion">0111200935</OtroTexto>
+    <OtroTexto codigo="DireccionImpresion">PURISCAL, SANTIAGO, COSTADO ESTE DEL LUBRICENTRO ARAYA, CASA COLOR BLANCO CON VERJAS NEGRAS</OtroTexto>
+    <OtroTexto codigo="RESUMEN_INTERNET">17982.81000</OtroTexto>
+    <OtroTexto codigo="RESUMEN_TELEFONIA">0.89000</OtroTexto>
+    <OtroTexto codigo="RESUMEN_TELEVISION">9400.66000</OtroTexto>
+    <OtroTexto codigo="SUB TOTAL">27384.36000</OtroTexto>
+    <OtroTexto codigo="id-convergente">59900</OtroTexto>
+  </Otros>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="Signature-ccdde05e-d193-4c91-8e25-3d4c91e7d14b"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><ds:Reference Id="Reference-0a51c096-9f3d-4d1b-8c71-433370440976" URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>RxVJ3f4RIVdfxPQJHoXYuSvPFUjQLf3114i0jwQ2DDA=</ds:DigestValue></ds:Reference><ds:Reference Id="ReferenceKeyInfo" URI="#KeyInfoId-Signature-ccdde05e-d193-4c91-8e25-3d4c91e7d14b"><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>zk/YXzVsSM9/f1doJhHrY8YXeBWwMesH6Og41tAW26I=</ds:DigestValue></ds:Reference><ds:Reference Type="http://uri.etsi.org/01903#SignedProperties" URI="#SignedProperties-Signature-ccdde05e-d193-4c91-8e25-3d4c91e7d14b"><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>QgBTk+3OhpXSlEOcuKWn678Lh3DS4shpnUxstUuuRWE=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue Id="SignatureValue-ccdde05e-d193-4c91-8e25-3d4c91e7d14b">T0QLcFlEUIiHnsmmslIW1tZZyuDIMP71XkPCMFRnCp+bxkyXcsH9nitL54DDnHyiZpJmgLvtbepL3nCqqkf+LuMyjwEieF31yKTnHHiJbBKB20ck1W+2VjEC1VnONyrkMTQLMXUOgwyWPFlXd09M86AiOk5JeLzCCbrhHM36LS7qtSNSgp970cSD22f78XdFuRfY4qzXgYRFiAce/L93gWmKtacpXckvCZYKjjYHU52I2ete1jzBLFjlxU9JX6CNjdts6tklJY18SGh86bD7ozNlXZOknRevptaUlN0t6TXLSH8c5SjKPTFKdzFYqA/zUw/eeynfIybWFKhtcN1iTQ==</ds:SignatureValue><ds:KeyInfo Id="KeyInfoId-Signature-ccdde05e-d193-4c91-8e25-3d4c91e7d14b"><ds:X509Data><ds:X509Certificate>MIIFLjCCAxagAwIBAgIGAYM3n+tiMA0GCSqGSIb3DQEBCwUAMFoxCzAJBgNVBAYTAkNSMR8wHQYDVQQKDBZNSU5JU1RFUklPIERFIEhBQ0lFTkRBMQwwCgYDVQQLDANER1QxHDAaBgNVBAMME0NBIFBFUlNPTkEgSlVSSURJQ0EwHhcNMjIwOTEzMTYxMjUwWhcNMjYwOTEyMTYxMjUwWjCBiDEZMBcGA1UEBRMQQ1BKLTMtMTAxLTc0NzQwNjELMAkGA1UEBhMCQ1IxGTAXBgNVBAoMEFBFUlNPTkEgSlVSSURJQ0ExDDAKBgNVBAsMA0NQSjE1MDMGA1UEAwwsTElCRVJUWSBTRVJWSUNJT1MgRklKT1MgTFkgIFNPQ0lFREFEIEFOT05JTUEwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDVWQu7OGqo79P77vTCVQjEJPlRRgXnxR3MRHzPi6t9HfMYkMK5aVC4PySo8HLaP5HLKDnCY/cDDWReuKMZJnNKErsUN8UG0rXixQJ/iy5HUD8XcFVrEZpvPVXE1yYYURqFZUGG7BGUZUSihFxeYRIvbU/52M57XbMWPIUrPVDV/vvM2eQSWNaWwt9X16nrkpxFXCoVpoHq5jCAidQnpfuND/YiRz32zWrC75SJ6yy+HNUhagqL0ivTuTYMZZwqMEvlaRyw+vknS0zyH+C9r5yU+aihF/j0RiBwKdgOHrJMQ3vUcNDd7CkwENX4oFzkr5TrOjLPrpk5Z/W3dDp8lGI3AgMBAAGjgcowgccwHwYDVR0jBBgwFoAUO21X9dZ86Z4QAiBB470azM+zTpUwHQYDVR0OBBYEFFdsWt0SyMpWlc4XD1v+SQ/ugOy3MAsGA1UdDwQEAwIGwDATBgNVHSUEDDAKBggrBgEFBQcDBDBjBggrBgEFBQcBAQRXMFUwUwYIKwYBBQUHMAKGR2h0dHBzOi8vcGtpLmNvbXByb2JhbnRlc2VsZWN0cm9uaWNvcy5nby5jci9wcm9kL2ludGVybWVkaWF0ZS1wai1wZW0uY3J0MA0GCSqGSIb3DQEBCwUAA4ICAQBF6rDxwyPzvHbZ1hVaqPtGCePujO2aM3Xx6TqrshNqljswXQi6KcxiPjv8vejuyRDAR/QlqRluxEVfUPDCZxigj5O4k0QphGUsD45JoEHUOLdTU4R74jc95H9GCzO9TuyLx6/VmzuKzxt4VdTztBEagi6SjH3g5+uSNlqa1p9FGUEMWMtV0d4jWc9JVANbulE68ZIu6Mgc4z9EEi0RT5XA4tGN0hurr3lEILNT+UJH6gzB5mjoUtkJxY+TMbaxph5xwUVHEJ0aOJDBS83ZQArXWAcEehVwEe2mXOch3+Cf1tn7ZqyWKijpgo37hTD0muy6oicKkGKANwVNUya9Rik1FsNv6Xd48tor1Vh0FBK5vsvtGQarB5NQ+11U8OmQTKcPv+pLt5hXufY2VpYqClluf/BjLBKPxo2D9jmmHM/vHmTjoArfku+mfRP3zit7Q9HIszNB1d6BwIhDinH5iZtW/C+mOIHFPfvWXsEfxB+3say67J2CLXFVj3sD5HGIcTZr6hBfWzcc/13hLM96J3HCEkpvS8PsdMyBVOmt/zL8WETRqiXzmmSW07pFGOu1HJs6fLYlMmYlXJoGh8n+Gm3ZlKAT8GBatKRhZAaI1TDKEDGwJ4HfXBIGUiTl+xUXctWLG3OxDxI4SxsVWECxsgjTksw96LeDNjrJDgJYLvro+A==</ds:X509Certificate></ds:X509Data><ds:KeyValue><ds:RSAKeyValue><ds:Modulus>1VkLuzhqqO/T++70wlUIxCT5UUYF58UdzER8z4urfR3zGJDCuWlQuD8kqPBy2j+Ryyg5wmP3Aw1kXrijGSZzShK7FDfFBtK14sUCf4suR1A/F3BVaxGabz1VxNcmGFEahWVBhuwRlGVEooRcXmESL21P+djOe12zFjyFKz1Q1f77zNnkEljWlsLfV9ep65KcRVwqFaaB6uYwgInUJ6X7jQ/2Ikc99s1qwu+UiessvhzVIWoKi9Ir07k2DGWcKjBL5WkcsPr5J0tM8h/gva+clPmooRf49EYgcCnYDh6yTEN71HDQ3ewpMBDV+KBc5K+U6zoyz66ZOWf1t3Q6fJRiNw==</ds:Modulus><ds:Exponent>AQAB</ds:Exponent></ds:RSAKeyValue></ds:KeyValue></ds:KeyInfo><ds:Object Id="XadesObjectId-97f7eae0-8545-4624-bb42-b6d1c2bc7cb4"><xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" Id="QualifyingProperties-fa94f671-471f-4e34-91f3-c047d3e9ee51" Target="#Signature-ccdde05e-d193-4c91-8e25-3d4c91e7d14b"><xades:SignedProperties Id="SignedProperties-Signature-ccdde05e-d193-4c91-8e25-3d4c91e7d14b"><xades:SignedSignatureProperties><xades:SigningTime>2024-11-01T00:33:18-06:00</xades:SigningTime><xades:SigningCertificate><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>KqtGG4ziHLJpdLayo5+LgfUoid0/AzkVjFKkQRPO+Yk=</ds:DigestValue></xades:CertDigest><xades:IssuerSerial><ds:X509IssuerName>CN=CA PERSONA JURIDICA, OU=DGT, O=MINISTERIO DE HACIENDA, C=CR</ds:X509IssuerName><ds:X509SerialNumber>1663085570914</ds:X509SerialNumber></xades:IssuerSerial></xades:Cert></xades:SigningCertificate><xades:SignaturePolicyIdentifier><xades:SignaturePolicyId><xades:SigPolicyId><xades:Identifier>https://tribunet.hacienda.go.cr/docs/esquemas/2016/v4.2/Resolucion_Comprobantes_Electronicos_DGT-R-48-2016.pdf</xades:Identifier><xades:Description /></xades:SigPolicyId><xades:SigPolicyHash><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>NmI5Njk1ZThkNzI0MmIzMGJmZDAyNDc4YjUwNzkzODM2NTBiOWUxNTBkMmI2YjgzYzZjM2I5NTZlNDQ4OWQzMQ==</ds:DigestValue></xades:SigPolicyHash></xades:SignaturePolicyId></xades:SignaturePolicyIdentifier></xades:SignedSignatureProperties><xades:SignedDataObjectProperties><xades:DataObjectFormat ObjectReference="#Reference-0a51c096-9f3d-4d1b-8c71-433370440976"><xades:MimeType>text/xml</xades:MimeType><xades:Encoding>UTF-8</xades:Encoding></xades:DataObjectFormat></xades:SignedDataObjectProperties></xades:SignedProperties></xades:QualifyingProperties></ds:Object></ds:Signature></FacturaElectronica>

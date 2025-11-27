@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using SICOREBackEnd.Utils;
 using System.IO;
 using System;
-using System.Linq;
 
 namespace SICOREBackEnd.Controllers
 {
@@ -16,12 +15,10 @@ namespace SICOREBackEnd.Controllers
     public class C_ExportacionReportesController : ControllerBase
     {
         Reportes reporte = new Reportes();
-
         ExportacionReporteDeCertificados certificados = new ExportacionReporteDeCertificados();
         ExportacionReporteDeCotizaciones cotizaciones = new ExportacionReporteDeCotizaciones();
         ExportacionReporteDeFormalizaciones formalizaciones = new ExportacionReporteDeFormalizaciones();
         ExportacionReporteDeVentas ventas = new ExportacionReporteDeVentas();
-        ExportacionReporteDeEsfuerzoAnual esfuerzo = new ExportacionReporteDeEsfuerzoAnual();
 
         private readonly IConfiguration _config;
         private readonly IWebHostEnvironment _environment;
@@ -114,27 +111,6 @@ namespace SICOREBackEnd.Controllers
             return Ok(ventas.ExportaVentasEnPDF(datosDelReporte, imgEncabezado, rutaDeDescarga, nombreDelArchivo));
         }
 
-        [HttpGet("ExportacionReporteEsfuerzoPDF/{idAgente}/{funcionario}")]
-        public async Task<IActionResult> ExportacionReporteEsfuerzoPDF(int idAgente, string funcionario)
-        {
-            IEnumerable<iReporteEsfuerzoAnualColaboradorPDF> datosDelReporte = await reporte.ExportacionReporteEsfuerzoPDF(idAgente);
-            IEnumerable<iDesgloseEsfuerzoColaborador> desglose = await reporte.TraeDesgloseEsfuerzoColaborador(idAgente);
-
-            string imgEncabezado = _rutaDeLaImagenEncabezado();
-            string rutaDeDescarga = _rutaDondeSeGuardaElReporte();
-            string nombreDelArchivo = _poneNombreAlReporte(Constantes.ESFUERZO);
-
-            return Ok(esfuerzo.ExportaReporteDeEsfuerzoEnPDF(datosDelReporte, desglose, imgEncabezado, rutaDeDescarga, nombreDelArchivo, funcionario));
-        }
-
-        [HttpGet("ExportacionReporteDeEsfuerzoAnualExcel")]
-        public async Task<IActionResult> ExportacionReporteDeEsfuerzoAnualExcel()
-        {
-            IEnumerable<iReporteEsfuerzoAnualColaboradorExcel> datosDelReporte = await reporte.ExportacionReporteDeEsfuerzoAnualExcel();
-
-            return Ok(datosDelReporte);
-        }
-
         private string _poneNombreAlReporte(string reporte)
         {
             DateTime hoy = DateTime.Now;
@@ -156,10 +132,6 @@ namespace SICOREBackEnd.Controllers
 
                 case "ventas":
                     nombreReporte = "Ventas_" + hoy.ToString("yyyyMMdd_HH:mm:ss.fff").Replace(" ", "_").Replace(":", "") + ".pdf";
-                    break;
-
-                case "esfuerzo":
-                    nombreReporte = "Esfuerzo_Anual_" + hoy.ToString("yyyyMMdd_HH:mm:ss.fff").Replace(" ", "_").Replace(":", "") + ".pdf";
                     break;
             }
 

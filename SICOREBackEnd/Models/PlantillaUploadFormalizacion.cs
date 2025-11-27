@@ -15,7 +15,7 @@ namespace SICOREBackEnd.Models
 
     public class iArchivoDeFormalizacion
     {
-        public string idFormalizacion { get; set; }
+        public int idFormalizacion { get; set; }
         public int idFuncionario { get; set; }
         public string cotizacion { get; set; }
         public IList<IFormFile> archivo { get; set; }
@@ -26,7 +26,7 @@ namespace SICOREBackEnd.Models
         public int idExpediente { get; set; }
         public int idProyecto { get; set; }
         public int idCotizacion { get; set; }
-        public string idFormalizacion { get; set; }
+        public int idFormalizacion { get; set; }
         public int idCertificado { get; set; }
         public int idFuncionario { get; set; }
         public string nombreArchivo { get; set; }

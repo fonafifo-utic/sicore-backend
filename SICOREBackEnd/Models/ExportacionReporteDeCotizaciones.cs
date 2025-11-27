@@ -84,7 +84,7 @@ namespace SICOREBackEnd.Models
 
                         foreach (var dato in datosDelReporte)
                         {
-                            if ((usuarioAgrupador == dato.usuario) && (sector == dato.sectorComercial))
+                            if (usuarioAgrupador == dato.usuario)
                             {
                                 _margenTop += 15;
                                 _margenIzquierda = 50;
