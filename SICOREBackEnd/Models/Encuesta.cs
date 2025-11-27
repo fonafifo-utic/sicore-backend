@@ -151,6 +151,22 @@ namespace SICOREBackEnd.Models
         public string hora { get; set; }
     }
 
+    public class iEncuestaTraeRespuestasParaExcel
+    {
+        public string pregunta { get; set; }
+        public string respuesta { get; set; }
+        public int contestaron { get; set; }
+    }
+
+    public class iEncuestaTraeRespuestasOpinion
+    {
+        public string pregunta { get; set; }
+        public string respuesta { get; set; }
+        public string fecha { get; set; }
+        public string cliente { get; set; }
+        public string agente { get; set; }
+    }
+
     public class Encuesta
     {	
         static IConfiguration confSICORE = (new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile(Constantes.APP_SETTINGS).Build());
@@ -503,6 +519,47 @@ namespace SICOREBackEnd.Models
             catch (Exception e)
             {
                 string mensaje = e.Message;
+            }
+
+            return resultado;
+        }
+
+        public async Task<IEnumerable<iEncuestaTraeRespuestasParaExcel>> ObtenerRespuestasDeLaEncuestaExportarExcel()
+        {
+            IEnumerable<iEncuestaTraeRespuestasParaExcel> resultado = null;
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(strconSICORE))
+                {
+                    resultado = await conexion.QueryAsync<iEncuestaTraeRespuestasParaExcel>("PA_ENCUESTA_TRAE_DASHBOARD_EXCEL",
+                        null, commandType: System.Data.CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            {
+                string mensaje = ex.Message;
+                resultado = null;
+            }
+
+            return resultado;
+        }
+
+        public async Task<IEnumerable<iEncuestaTraeRespuestasOpinion>> ObtenerRespuestasOpinion(string fechaInicio, string fechaFin)
+        {
+            IEnumerable<iEncuestaTraeRespuestasOpinion> resultado = null;
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(strconSICORE))
+                {
+                    var idCliente = new { @fechaInicio = fechaInicio, @fechaFin = fechaFin };
+                    resultado = await conexion.QueryAsync<iEncuestaTraeRespuestasOpinion>("PA_ENCUESTA_TRAE_RESPUESTAS_OPINION",
+                        idCliente, commandType: System.Data.CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            {
+                string mensaje = ex.Message;
+                resultado = null;
             }
 
             return resultado;
